@@ -1,0 +1,10 @@
+{
+    "code-runner.executorMapByGlob": {
+        "pom.xml": "cd $dir && mvn clean package"
+    },
+    "files.associations": {
+        "stdio.h": "c",
+        "lib.h": "c",
+        "locale.h": "c"
+    }
+}
