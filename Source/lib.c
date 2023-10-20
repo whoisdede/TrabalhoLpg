@@ -54,13 +54,14 @@ int busca(int lin, int col, int m[lin][col], int x, int index){
         }
         j++;
     }
-    return cont;
+    return cont; //retorna >0 se achar e qntde de ocorrências.
 }
 
 
 // Verificação para o usuário selecionar corretamente o conjunto que deseja
 int validindex(int cont){
     int index;
+    index = 0;
         do{
             printf("\nQual conjunto deseja interagir = ");
             scanf("%i",&index);
@@ -170,3 +171,114 @@ void search(int lin, int col, int m[lin][col], int cont){
          printf("\nNenhum Conjunto criado\nTente pela opção 1\n");
     }
 }
+
+void removecon(int lin, int col, int m[lin][col], int cont){
+    int index=0;
+    int temp=0;
+    if(cont > 0){
+        index = validindex(cont);
+        int r1=index;
+        int r2=index+1;
+        int a = index;
+        for(int i=0; i < col; i++){
+            printf("Tchau");
+            m[index][i] = 0;
+        }
+        while(a+1 != cont){  //trocar por um if e um for.
+            for (int i = 0; i < cont; ++i) {
+                printf("Tchau1");  
+                temp = m[r1 - 1][i]; 
+                m[r1 - 1][i] = m[r2 - 1][i]; 
+                m[r2 - 1][i] = temp; 
+                }
+            a++;   
+            r1++;
+            r2++;
+        }
+        
+    }else{
+        printf("\nNenhum Conjunto criado\nTente pela opção 1\n");
+    }
+}
+
+    int sumexclusivenum(int lin, int col, int m[lin][col],int index1,int index2){
+        int x, cont;
+        x = cont = 0;
+        for(int j = 0; j < col; j++ ){
+                x = m[index2][j];
+                cont += busca(lin,col,m,x,index1);
+            }
+        return cont;
+    }
+
+
+
+
+
+
+    // Verifica se dois conjuntos são iguais, se diferentes retorna 1, se iguais retorna 0
+    int sameconj(int lin, int col, int m[lin][col],int index1,int index2){
+        int x,cont;
+        x = cont = 0;
+        if(sizeconj(lin,col,m,index1) != sizeconj(lin,col,m,index2)){
+            return 1;
+        }else{
+            for(int j = 0; j < col; j++ ){
+                x = m[index2][j];
+                cont += busca(lin,col,m,x,index1);
+            }
+            if(sizeconj(lin,col,m,index1) == cont){
+                return 0;
+            }else{
+                return 1;
+            }
+        }
+    }
+
+
+
+    // Verifica a posição do proximo zero se existir
+    // Tamanho total do conjunto
+    int sizeconj(int lin, int col, int m[lin][col], int index){
+        int cont = 0;
+        while ((m[index][cont] != 0) && ( cont < col)){
+            cont++;
+        }
+        return cont;
+    }
+    
+    // Une dois conjuntos utilizando index de suas linhas
+    void unionconj(int lin, int col,int m[lin][col], int cont){
+        int index1,index2,tam1,tam2,x,i,j = 0; 
+        index1 = index2 = tam1 = tam2 = x = i = j = 0;
+        if(cont > 0){
+            do{
+                index1 = validindex(cont);
+                index2 = validindex(cont);
+            }while (index1 == index2);
+             
+            if((sizeconj(lin,col,m,index1) + sizeconj(lin,col,m,index2) > col)){
+                    printf("A união dos conjuntos ultrapassa o tamanho limite");
+            }else{
+                tam1 = sizeconj(lin,col,m,index1);
+                tam2 = sizeconj(lin,col,m,index2);
+                for(int j = 0; j < tam1; j++){
+                    m[cont][j] = m[index1][j];
+                }
+                i = tam1;
+                for(int j = 0; j < tam2; j++){
+                    x = m[index2][j];
+                    if(busca(lin,col,m,x,index1)==0){
+                        m[cont][tam1]=x;
+                        tam1++;
+                    }
+                }    
+            }
+
+        }else{
+            printf("\nNenhum Conjunto criado\nTente pela opção 1\n");
+        }
+    }
+       
+                  
+
