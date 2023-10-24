@@ -255,8 +255,9 @@ void removecon(int lin, int col, int m[lin][col], int cont){
             printf("\nNenhum Conjunto criado\nTente pela opção 1\n");
         }
     }
-    // :)
+   // :)
     void interconj(int lin, int col,int m[lin][col], int cont){
+        if(cont > 0){
         int index1 = validindex(cont);
         int index2 = validindex(cont);
         int temp=0;
@@ -265,11 +266,17 @@ void removecon(int lin, int col, int m[lin][col], int cont){
                 if(m[index1][i]==m[index2][j]){         //localiza termos iguais
                     m[cont][temp]=m[index2][j];         //coloca os termos iguais na ultima linha
                     temp++;                             //avança uma coluna
-                }       
+                }      
             }
         }
         cont++;
+        }
+        else{
+            printf("\nNenhum Conjunto criado\nTente pela opção 1\n");
+        }
     }
+
+        
         
                  
 
