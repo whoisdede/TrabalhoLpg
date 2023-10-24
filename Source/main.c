@@ -50,7 +50,7 @@ int main(){
             break;
         
         case 5:
-            /* code */
+            interconj(lin, col, m, cont);
             break;
         
         case 6:
