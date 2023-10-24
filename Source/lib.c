@@ -9,7 +9,7 @@ void menu(){
     printf("\n[2] - Inserir Dados Conjunto");
     printf("\n[3] - Remover Conjunto");
     printf("\n[4] - Realizar União Conjuntos");
-    printf("\n[5] - Realizar Intersecção Conjuntos");
+    printf("\n[5] - Realizar Intersec��o Conjuntos");
     printf("\n[6] - Mostrar Conjunto");
     printf("\n[7] - Mostrar Todos Conjuntos");
     printf("\n[8] - Buscar Valor");
@@ -37,8 +37,8 @@ int criarconj(int lin, int cont){
         printf("\nNovo conjunto adicionado\n");
         return cont;
     }else{
-        printf("\nOperaçãoo cancelada");
-        printf("\nA quantidade de conjuntos execede capacidade máxima\n");
+        printf("\nOpera��o cancelada");
+        printf("\nA quantidade de conjuntos execede capacidade m�xima\n");
         return cont;
     }
 }
@@ -181,12 +181,10 @@ void removecon(int lin, int col, int m[lin][col], int cont){
         int r2=index+1;
         int a = index;
         for(int i=0; i < col; i++){
-            printf("Tchau");
             m[index][i] = 0;
         }
         while(a+1 < cont){ 
-            for (int i = 0; i < cont; ++i) {
-                printf("Tchau1");   
+            for (int i = 0; i < cont; ++i) {  
                 temp = m[r1][i]; 
                 m[r1][i] = m[r2][i];         
                 m[r2][i] = temp; 
@@ -220,9 +218,9 @@ void removecon(int lin, int col, int m[lin][col], int cont){
         }
         return cont;
     }
-    
+
     // Une dois conjuntos utilizando index de suas linhas
-    void unionconj(int lin, int col,int m[lin][col], int cont){
+    int unionconj(int lin, int col,int m[lin][col], int cont){
         int index1,index2,tam1,tam2,x,i,j,same; 
         index1 = index2 = tam1 = tam2 = x = i = j = same = 0;
         if(cont > 0){
@@ -235,6 +233,7 @@ void removecon(int lin, int col, int m[lin][col], int cont){
                 same = sumsamenum(lin,col,m,index1,index2);
             if((tam1+tam2-same) > col){
                     printf("A união dos conjuntos ultrapassa o tamanho limite");
+                    return 1;
             }else{
                 
                 for(int j = 0; j < tam1; j++){
@@ -248,28 +247,35 @@ void removecon(int lin, int col, int m[lin][col], int cont){
                         tam1++;
                     }
                 }
-                cont++;    
+                return 0;   
             }
 
         }else{
             printf("\nNenhum Conjunto criado\nTente pela opção 1\n");
+            return 1;
         }
     }
     // :)
-    void interconj(int lin, int col,int m[lin][col], int cont){
-        int index1 = validindex(cont);
-        int index2 = validindex(cont);
-        int temp=0;
-        for(int i = 0; i<col; i++){
-            for(int j=0; j<col; j++){
-                if(m[index1][i]==m[index2][j]){         //localiza termos iguais
-                    m[cont][temp]=m[index2][j];         //coloca os termos iguais na ultima linha
-                    temp++;                             //avança uma coluna
-                }       
+    int interconj(int lin, int col,int m[lin][col], int cont){
+        if(cont > 0){
+            int index1 = validindex(cont);
+            int index2 = validindex(cont);
+            int temp=0;
+            for(int i =0; i<col; i++){
+                if(busca(lin, col, m , m[index1][i], index2)>0){
+                    m[cont][i]=m[index1][i];
+                    temp++;
+                }
+            }
+            cont++;
+            if(temp!=0){
+                return 1;
             }
         }
-        cont++;
+        else{
+            printf("\nNenhum Conjunto criado\nTente pela opção 1\n");
+        }
     }
+
         
-                 
 
