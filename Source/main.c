@@ -8,7 +8,7 @@ int main(){
     setlocale(LC_ALL, "Portuguese_Brazil");
         
 
-        printf("\nInsira quantos conjuntos voc� deseja armazenar\n");
+        printf("\nInsira quantos conjuntos você deseja armazenar\n");
         scanf("%i",&lin);
         printf("\nInsira qual tamanho dos conjuntos\n");
         scanf("%i",&col);
@@ -18,7 +18,7 @@ int main(){
         while(x != 9){
         
         printf("\n");
-        printf("\nEscolha uma entre as opera��es oferecidas");
+        printf("\nEscolha uma entre as operações oferecidas");
         menu();
         
         
@@ -45,7 +45,6 @@ int main(){
                 printf("Operação cancelada\nCriar um novo conjunto ultrapassa o limite maximo");
             }else{
                 unionconj(lin,col,m,cont);
-                cont++;
             }
             
             break;
@@ -69,7 +68,7 @@ int main(){
             printf("\nPrograma Encerrado\n");
             break;
         default:
-            printf("\nOp��o Inv�lido\n");
+            printf("\nOperação Inválida\n");
             break;
         }
     }
