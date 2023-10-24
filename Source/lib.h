@@ -16,4 +16,5 @@ int sameconj(int lin, int col, int m[lin][col],int index1,int index2);
 int sumsamenum(int lin, int col, int m[lin][col],int index1,int index2);
 int sizeconj(int lin, int col, int m[lin][col], int index);
 void unionconj(int lin, int col,int m[lin][col], int cont);
+void interconj(int lin, int col,int m[lin][col], int cont);
 #endif
