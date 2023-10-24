@@ -13,7 +13,7 @@ void showall(int lin, int col,int m[lin][col], int cont);
 void search(int lin, int col, int m[lin][col], int cont);
 void removecon(int lin, int col, int m[lin][col], int cont);
 int sameconj(int lin, int col, int m[lin][col],int index1,int index2);
-int sumsamenum(int lin, int col, int m[lin][col],int index1,int index2);
 int sizeconj(int lin, int col, int m[lin][col], int index);
-void unionconj(int lin, int col,int m[lin][col], int cont);
+int unionconj(int lin, int col,int m[lin][col], int cont);
+int interconj(int lin, int col,int m[lin][col], int cont);
 #endif
