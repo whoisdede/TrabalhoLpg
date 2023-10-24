@@ -184,18 +184,18 @@ void removecon(int lin, int col, int m[lin][col], int cont){
             printf("Tchau");
             m[index][i] = 0;
         }
-        while(a+1 != cont){  //trocar por um if e um for.
+        while(a+1 < cont){ 
             for (int i = 0; i < cont; ++i) {
-                printf("Tchau1");  
-                temp = m[r1 - 1][i]; 
-                m[r1 - 1][i] = m[r2 - 1][i]; 
-                m[r2 - 1][i] = temp; 
+                printf("Tchau1");   
+                temp = m[r1][i]; 
+                m[r1][i] = m[r2][i];         
+                m[r2][i] = temp; 
                 }
             a++;   
             r1++;
             r2++;
         }
-        
+        cont--;
     }else{
         printf("\nNenhum Conjunto criado\nTente pela opção 1\n");
     }
